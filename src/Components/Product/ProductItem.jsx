@@ -1,15 +1,15 @@
 import ProductItemForm from "./ProductItemForm";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 
 function ProductItem(props) {
     return (
         <Card>
             <Card.Body>
-                Link
-                <a href={"product/" + props.product._id}>
+                <Link to={"product/" + props.product._id}>
                     <Card.Img variant="top" src={props.product.mainImage} />
                     <Card.Title>{props.product.name}</Card.Title>
-                </a>
+                </Link>
             </Card.Body>
             <Card.Footer>
                 {props.product.price}€
