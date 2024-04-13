@@ -4,15 +4,26 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import HeaderCartButton from "./HeaderCartButton";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
     return (
         <>
             <Navbar bg="light" fixed="top" variant="light">
                 <Container>
-                    <Navbar.Brand href="/">Hypershopping</Navbar.Brand>
+                    <Navbar.Brand>
+                        <Link to={"/"}>Hypershopping</Link>
+                    </Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="#">Home</Nav.Link>
+                        <Link
+                            to={"/"}
+                            role={"button"}
+                            className={"nav-link"}
+                            data-rr-ui-event-key={"/"}
+                            tabIndex={"0"}
+                        >
+                            Home
+                        </Link>
                         <Nav.Link href="#">Link</Nav.Link>
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">

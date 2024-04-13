@@ -1,5 +1,5 @@
 import Spinner from "react-bootstrap/Spinner";
-import ErrorToaster from "../ErrorToaster";
+import ErrorToaster from "../Layout/ErrorToaster";
 import ProductItem from "./ProductItem";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -26,7 +26,9 @@ function Products() {
 
     return (
         <>
-            {errorMessage && <ErrorToaster errorMessage={errorMessage} />}
+            {errorMessage && (
+                <ErrorToaster errorMessage={errorMessage} link={""} />
+            )}
             {products.length == 0 && !errorMessage && (
                 <Spinner animation="border" role="status" variant="primary">
                     <span className="visually-hidden">Loading...</span>
