@@ -47,7 +47,7 @@ function App() {
     //then add the rest after index ... is the Spread Operator
     //slice return a list ==> Wich does not mutate the list (bad in React)
 
-    const [cartAmount, cartDispatch] = useReducer(cartReducer, []);
+    const [cartState, cartDispatch] = useReducer(cartReducer, []);
 
     const toggleModal = () => {
         setModal(!modalStatus);
@@ -55,16 +55,7 @@ function App() {
 
     return (
         <>
-            <CartContext.Provider
-                value={[
-                    cartItems,
-                    setCartItems,
-                    updateCartItem,
-                    removeCartItem,
-                    cartAmount,
-                    cartDispatch,
-                ]}
-            >
+            <CartContext.Provider value={[cartState, cartDispatch]}>
                 <BrowserRouter>
                     {modalStatus && (
                         <Cart
