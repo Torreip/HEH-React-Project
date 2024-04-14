@@ -45,7 +45,6 @@ function Products() {
                                 />
                             </Col>
                         ))}
-                        ;
                     </Row>
                 </>
             )}
