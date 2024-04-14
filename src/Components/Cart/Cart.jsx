@@ -11,15 +11,10 @@ import Form from "react-bootstrap/esm/Form";
 function Cart(props) {
     let cartContext = useContext(CartContext);
 
-    const removeItem = (event) => {
+    const removeItemHandler = (event) => {
         event.preventDefault();
-        const index = cartContext[0].findIndex(
-            (element) => element.id == event.target[1].value
-        );
-        const toRemoveTotal =
-            cartContext[0][index].price * cartContext[0][index].quantity;
-        cartContext[3](index);
-        cartContext[5]({ remove: toRemoveTotal });
+
+        cartContext[1]({ type: "remove", id: event.target[1].value });
     };
 
     return (
@@ -54,7 +49,7 @@ function Cart(props) {
                                 <td>{product.price}€</td>
                                 <td>{product.quantity}</td>
                                 <td>
-                                    <Form onSubmit={removeItem}>
+                                    <Form onSubmit={removeItemHandler}>
                                         <Button
                                             variant="outline-primary"
                                             type="submit"
@@ -78,7 +73,12 @@ function Cart(props) {
                 <Container fluid>
                     <Row className="cartRow">
                         <h3>Total Amount</h3>
-                        <h3>{cartContext[4]} €</h3>
+                        <h3>
+                            {cartContext[0].reduce((acc, product) => {
+                                return acc + product.price * product.quantity;
+                            }, 0)}
+                            €
+                        </h3>
                     </Row>
                 </Container>
             </Modal.Body>

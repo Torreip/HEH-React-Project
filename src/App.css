@@ -5,6 +5,8 @@
     text-align: center;
 }
 
+/* APP SPECIFIC CSS */
+
 span > a {
     color: var(--bs-navbar-brand-color);
     font-size: inherit;
@@ -13,4 +15,66 @@ span > a {
 
 span > a:hover {
     color: inherit;
+}
+
+.cardBody {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+#description {
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin: 0 5vw;
+    width: calc(50% - 10vw);
+}
+
+.cartRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 0;
+}
+
+.itemRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 0;
+}
+
+.cartRow > h3 {
+    font-size: 1.6em;
+    font-weight: 500;
+    margin: 0;
+    width: fit-content;
+}
+
+.itemRow > h3,
+.itemRow > p {
+    font-size: 1.6rem;
+    font-weight: normal;
+    margin: 0 5vw;
+    width: fit-content;
+}
+
+.itemCol {
+    flex: unset !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 1em 0 !important;
+    width: fit-content !important;
+}
+
+.itemCol > p {
+    font-size: 1.6rem !important;
+    font-weight: 300 !important;
+    margin: 0 5vw !important;
+    width: fit-content !important;
 }

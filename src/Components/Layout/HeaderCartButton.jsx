@@ -6,8 +6,8 @@ import { useContext } from "react";
 const HeaderCartButton = (props) => {
     const cartContext = useContext(CartContext);
 
-    let cartItem = cartContext[0].reduce((acc) => {
-        return acc + 1;
+    let cartItem = cartContext[0].reduce((acc, product) => {
+        return acc + product.quantity;
     }, 0);
 
     return (

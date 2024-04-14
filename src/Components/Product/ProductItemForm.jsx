@@ -5,46 +5,21 @@ import { useContext } from "react";
 import { CartContext } from "../../App";
 
 function ProductItemForm(props) {
-    let index;
     let cartContext = useContext(CartContext);
     const addToCartHandler = (event) => {
         event.preventDefault();
         let quantity = event.target[0].valueAsNumber;
         if (quantity < 1 || isNaN(quantity)) {
+            console.log("Invalid Quantity");
             return;
         }
-        if (cartContext[0] != []) {
-            index = cartContext[0].findIndex(
-                (element) => element.id == props.product._id
-            );
-        }
-        if (cartContext[0] == []) {
-            cartContext[1]([
-                {
-                    id: props.product._id,
-                    name: props.product.name,
-                    quantity: quantity,
-                    price: props.product.price,
-                },
-            ]);
-        } else if (index > -1) {
-            cartContext[2](
-                index,
-                "quantity",
-                cartContext[0][index].quantity + quantity
-            );
-        } else {
-            cartContext[1]((prev) => [
-                ...prev,
-                {
-                    id: props.product._id,
-                    quantity: quantity,
-                    name: props.product.name,
-                    price: props.product.price,
-                },
-            ]);
-        }
-        cartContext[5]({ add: quantity * props.product.price });
+        cartContext[1]({
+            type: "add",
+            id: props.product._id,
+            name: props.product.name,
+            quantity: quantity,
+            price: props.product.price,
+        });
     };
 
     return (
